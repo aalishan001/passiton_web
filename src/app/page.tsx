@@ -1,66 +1,50 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+/**
+ * Passiton Landing Page
+ * 
+ * A modern, minimalist landing page for Passiton - a freecycling app
+ * focused on the joy of giving, sustainability, and community sharing.
+ * 
+ * Sections:
+ * 1. Hero - Main headline and app store CTAs
+ * 2. Why Passiton - Feature cards highlighting benefits
+ * 3. How It Works - 3-step process
+ * 4. Sustainability - Environmental impact messaging
+ * 5. Trust - Key guarantees and trust indicators
+ * 6. Download CTA - Strong call-to-action
+ * 7. Footer - About and links
+ */
+
+import Hero from "@/components/sections/Hero";
+import WhyPassiton from "@/components/sections/WhyPassiton";
+import HowItWorks from "@/components/sections/HowItWorks";
+import Sustainability from "@/components/sections/Sustainability";
+import Trust from "@/components/sections/Trust";
+import DownloadCTA from "@/components/sections/DownloadCTA";
+import Footer from "@/components/sections/Footer";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <main>
+      {/* Hero Section - Above the fold */}
+      <Hero />
+
+      {/* Why Passiton - Feature highlights */}
+      <WhyPassiton />
+
+      {/* How It Works - 3-step process */}
+      <HowItWorks />
+
+      {/* Sustainability - Environmental messaging */}
+      <Sustainability />
+
+      {/* Trust & Simplicity - Key guarantees */}
+      <Trust />
+
+      {/* Download CTA - Primary conversion point */}
+      <DownloadCTA />
+
+      {/* Footer - About and links */}
+      <Footer />
+    </main>
   );
 }

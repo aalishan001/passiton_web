@@ -1,0 +1,134 @@
+/**
+ * Footer Section Styles
+ * Minimal, muted green footer design
+ */
+
+.footer {
+    padding: var(--spacing-12) var(--spacing-6) var(--spacing-8);
+    background: var(--gray-900);
+    color: var(--gray-300);
+}
+
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* ================================
+   Brand Section
+   ================================ */
+.brand {
+    text-align: center;
+    margin-bottom: var(--spacing-6);
+}
+
+.logoWrapper {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    margin-bottom: var(--spacing-4);
+}
+
+.logoText {
+    font-size: var(--font-size-xl);
+    font-weight: 700;
+    color: white;
+    letter-spacing: -0.02em;
+}
+
+.about {
+    font-size: var(--font-size-sm);
+    color: var(--gray-400);
+    line-height: 1.7;
+    max-width: 500px;
+    margin: 0 auto;
+}
+
+.link {
+    color: var(--green-400);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.link:hover {
+    color: var(--green-300);
+    text-decoration: underline;
+}
+
+/* ================================
+   Tagline
+   ================================ */
+.tagline {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-2);
+    font-size: var(--font-size-base);
+    font-weight: 500;
+    color: var(--gray-300);
+    margin-bottom: var(--spacing-8);
+}
+
+/* ================================
+   Divider
+   ================================ */
+.divider {
+    height: 1px;
+    background: linear-gradient(to right,
+            transparent,
+            var(--gray-700),
+            transparent);
+    margin-bottom: var(--spacing-6);
+}
+
+/* ================================
+   Bottom Row
+   ================================ */
+.bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-4);
+}
+
+.copyright {
+    font-size: var(--font-size-sm);
+    color: var(--gray-500);
+}
+
+/* ================================
+   Navigation Links
+   ================================ */
+.links {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-3);
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.footerLink {
+    font-size: var(--font-size-sm);
+    color: var(--gray-400);
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.footerLink:hover {
+    color: var(--green-400);
+}
+
+.separator {
+    color: var(--gray-600);
+    font-size: var(--font-size-xs);
+}
+
+/* ================================
+   Responsive
+   ================================ */
+@media (min-width: 768px) {
+    .bottom {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+}
