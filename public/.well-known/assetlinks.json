@@ -1,0 +1,14 @@
+[
+    {
+        "relation": [
+            "delegate_permission/common.handle_all_urls"
+        ],
+        "target": {
+            "namespace": "android_app_package_name",
+            "package_name": "com.thirdeyecreative.passiton",
+            "sha256_cert_fingerprints": [
+                "93:F3:9D:21:A5:CA:00:1D:04:CE:83:3E:A4:61:5D:0E:3D:42:16:17:A8:49:68:08:C3:60:89:03:0A:55:A5:08"
+            ]
+        }
+    }
+]
