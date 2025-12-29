@@ -1,11 +1,13 @@
+"use client";
 import React from "react";
+import styles from "./policy.module.css";
 
 const PrivacyPolicy = () => {
   return (
-    <div className="policy-container">
-      <div className="policy-card">
-        <h1 className="policy-title">Passiton – Privacy Policy</h1>
-        <p className="policy-updated">
+    <div className={styles.container}>
+      <div className={styles.card}>
+        <h1 className={styles.title}>Passiton – Privacy Policy</h1>
+        <p className={styles.updated}>
           <strong>Last Updated:</strong> 01/01/2026
         </p>
         <section>
@@ -200,56 +202,6 @@ const PrivacyPolicy = () => {
           </p>
         </section>
       </div>
-      <style jsx>{`
-        .policy-container {
-          display: flex;
-          justify-content: center;
-          align-items: flex-start;
-          min-height: 100vh;
-          background: #f8fafc;
-        }
-        .policy-card {
-          background: #fff;
-          border-radius: 16px;
-          box-shadow: 0 2px 16px rgba(0, 0, 0, 0.08);
-          max-width: 800px;
-          width: 100%;
-          padding: 32px 24px;
-          margin: 40px 0;
-        }
-        .policy-title {
-          font-size: 2.2rem;
-          font-weight: 700;
-          margin-bottom: 8px;
-          color: #1e293b;
-        }
-        .policy-updated {
-          color: #64748b;
-          margin-bottom: 24px;
-        }
-        section {
-          margin-bottom: 24px;
-        }
-        h2 {
-          font-size: 1.3rem;
-          color: #2563eb;
-          margin-bottom: 8px;
-        }
-        h3 {
-          font-size: 1.1rem;
-          color: #334155;
-          margin-bottom: 6px;
-        }
-        ul {
-          margin-left: 18px;
-          margin-bottom: 12px;
-        }
-        hr {
-          border: none;
-          border-top: 1px solid #e2e8f0;
-          margin: 18px 0;
-        }
-      `}</style>
     </div>
   );
 };
