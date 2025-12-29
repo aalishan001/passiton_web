@@ -24,24 +24,24 @@
   color: #64748b;
   margin-bottom: 24px;
 }
-section {
+.section {
   margin-bottom: 24px;
 }
-h2 {
+.h2 {
   font-size: 1.3rem;
   color: #2563eb;
   margin-bottom: 8px;
 }
-h3 {
+.h3 {
   font-size: 1.1rem;
   color: #334155;
   margin-bottom: 6px;
 }
-ul {
+.ul {
   margin-left: 18px;
   margin-bottom: 12px;
 }
-hr {
+.hr {
   border: none;
   border-top: 1px solid #e2e8f0;
   margin: 18px 0;
