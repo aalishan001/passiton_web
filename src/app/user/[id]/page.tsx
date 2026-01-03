@@ -1,12 +1,13 @@
 /**
  * User Profile Deep Link Page
  * 
- * This page handles deep links to user profiles (passiton.app/user/[id])
- * Shows a beautifully designed preview and prompts users to open the app.
+ * This page handles deep links to user profiles (passiton.in/user/[id])
+ * Shows a clean, modern preview and prompts users to open the app.
  */
 
 import Link from "next/link";
 import { Metadata } from "next";
+import AutoRedirect from "@/components/AutoRedirect";
 
 interface PageProps {
     params: Promise<{ id: string }>;
@@ -15,71 +16,61 @@ interface PageProps {
 export default async function UserProfilePage({ params }: PageProps) {
     const { id } = await params;
 
-    // Construct deep link URL for the app with fallback to Play Store
-    const appDeepLink = `intent://passiton.app/user/${id}#Intent;scheme=https;package=com.thirdeyecreative.passiton;S.browser_fallback_url=https://play.google.com/store/apps/details?id=com.thirdeyecreative.passiton;end`;
+    // Construct deep link URL for the app
+    // Using passiton.in to match the primary domain in AndroidManifest
+    const appDeepLink = `intent://passiton.in/user/${id}#Intent;scheme=https;package=com.thirdeyecreative.passiton;S.browser_fallback_url=https://play.google.com/store/apps/details?id=com.thirdeyecreative.passiton;end`;
     const playStoreLink = "https://play.google.com/store/apps/details?id=com.thirdeyecreative.passiton";
     const appStoreLink = "https://apps.apple.com/app/passiton";
 
     return (
-        <main className="min-h-screen bg-gradient-to-br from-[#0A1F05] via-[#172D01] to-[#317039] flex items-center justify-center p-4 sm:p-6 relative overflow-hidden">
-            {/* Animated background elements */}
-            <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute -top-40 -right-40 w-96 h-96 bg-[#BDF906]/10 rounded-full blur-3xl animate-pulse" />
-                <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-[#317039]/20 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[#BDF906]/5 rounded-full blur-3xl" />
-            </div>
-
-            <div className="relative z-10 max-w-md w-full">
-                {/* Glass Card */}
-                <div className="backdrop-blur-xl bg-white/95 rounded-3xl shadow-2xl p-8 text-center border border-white/20">
+        <main className="min-h-screen bg-[#F5F7FA] flex items-center justify-center p-4 sm:p-6 relative font-sans">
+            <AutoRedirect deepLink={appDeepLink} />
+            
+            <div className="max-w-md w-full">
+                {/* Clean White Card */}
+                <div className="bg-white rounded-3xl shadow-xl p-8 text-center border border-gray-100">
                     {/* Avatar */}
-                    <div className="w-24 h-24 mx-auto mb-6 bg-gradient-to-br from-[#172D01] to-[#317039] rounded-full flex items-center justify-center shadow-lg shadow-[#172D01]/30 transform hover:scale-105 transition-transform duration-300 ring-4 ring-white">
-                        <svg className="w-12 h-12 text-[#BDF906]" fill="currentColor" viewBox="0 0 24 24">
+                    <div className="w-20 h-20 mx-auto mb-6 bg-gray-100 rounded-full flex items-center justify-center shadow-lg transform hover:scale-105 transition-all duration-300 ring-4 ring-white">
+                        <svg className="w-10 h-10 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
                             <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
                         </svg>
                     </div>
 
                     {/* Badge */}
-                    <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#172D01]/10 rounded-full mb-4">
-                        <span className="w-2 h-2 bg-[#317039] rounded-full animate-pulse" />
-                        <span className="text-xs font-medium text-[#172D01]">Profile shared</span>
+                    <div className="inline-flex items-center gap-2 px-4 py-1.5 bg-gray-100 rounded-full mb-6">
+                        <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
+                        <span className="text-xs font-semibold text-gray-600 uppercase tracking-wide">Shared Profile</span>
                     </div>
 
                     {/* Heading */}
-                    <h1 className="text-2xl sm:text-3xl font-bold text-[#0A0C02] mb-2 tracking-tight">
+                    <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-3 tracking-tight">
                         Check Out This Profile!
                     </h1>
 
-                    <p className="text-gray-600 mb-8 leading-relaxed">
-                        Someone wants you to connect with this Passiton member. See their listings and karma points!
+                    <p className="text-gray-500 mb-8 leading-relaxed text-base px-2">
+                        Someone wants you to connect with this Passiton member. Open the app to see their listings and karma!
                     </p>
 
                     {/* Stats Preview */}
-                    <div className="flex justify-center gap-6 mb-8">
-                        <div className="text-center">
-                            <div className="w-12 h-12 mx-auto mb-2 bg-gradient-to-br from-[#BDF906]/20 to-[#BDF906]/10 rounded-xl flex items-center justify-center">
-                                <span className="text-2xl">🎁</span>
-                            </div>
-                            <span className="text-xs text-gray-500">Listings</span>
+                    <div className="flex justify-center gap-4 sm:gap-6 mb-8 bg-gray-50 rounded-2xl p-4">
+                        <div className="text-center flex-1">
+                            <span className="block text-xl">🎁</span>
+                            <span className="text-[10px] uppercase font-bold text-gray-400 mt-1 block">Listings</span>
                         </div>
-                        <div className="text-center">
-                            <div className="w-12 h-12 mx-auto mb-2 bg-gradient-to-br from-[#FFD700]/20 to-[#FFD700]/10 rounded-xl flex items-center justify-center">
-                                <span className="text-2xl">⭐</span>
-                            </div>
-                            <span className="text-xs text-gray-500">Karma</span>
+                        <div className="text-center flex-1 border-l border-r border-gray-200 px-2">
+                            <span className="block text-xl">⭐</span>
+                            <span className="text-[10px] uppercase font-bold text-gray-400 mt-1 block">Karma</span>
                         </div>
-                        <div className="text-center">
-                            <div className="w-12 h-12 mx-auto mb-2 bg-gradient-to-br from-[#FF6B6B]/20 to-[#FF6B6B]/10 rounded-xl flex items-center justify-center">
-                                <span className="text-2xl">💚</span>
-                            </div>
-                            <span className="text-xs text-gray-500">Reviews</span>
+                        <div className="text-center flex-1">
+                            <span className="block text-xl">💚</span>
+                            <span className="text-[10px] uppercase font-bold text-gray-400 mt-1 block">Reviews</span>
                         </div>
                     </div>
 
                     {/* Open App Button - Primary CTA */}
                     <a
                         href={appDeepLink}
-                        className="group block w-full bg-gradient-to-r from-[#172D01] to-[#317039] text-white font-bold py-4 px-6 rounded-2xl mb-4 shadow-lg shadow-[#172D01]/30 hover:shadow-xl hover:shadow-[#172D01]/40 transform hover:-translate-y-0.5 transition-all duration-200"
+                        className="group block w-full bg-[#172D01] text-white font-bold py-4 px-6 rounded-2xl mb-4 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 transition-all duration-200"
                     >
                         <span className="flex items-center justify-center gap-2">
                             View Profile in App
@@ -89,55 +80,50 @@ export default async function UserProfilePage({ params }: PageProps) {
                         </span>
                     </a>
 
-                    {/* Divider */}
-                    <div className="flex items-center gap-4 my-6">
-                        <div className="flex-1 h-px bg-gradient-to-r from-transparent to-gray-200" />
-                        <span className="text-xs text-gray-400 font-medium uppercase tracking-wider">Download</span>
-                        <div className="flex-1 h-px bg-gradient-to-l from-transparent to-gray-200" />
-                    </div>
-
-                    {/* App Store Links */}
-                    <div className="flex gap-3 justify-center">
-                        <a
-                            href={playStoreLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 bg-[#0A0C02] text-white py-3 px-5 rounded-xl text-sm font-medium hover:bg-[#1a1c15] transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg"
-                        >
-                            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
-                            </svg>
-                            Google Play
-                        </a>
-                        <a
-                            href={appStoreLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className="flex items-center gap-2 bg-[#0A0C02] text-white py-3 px-5 rounded-xl text-sm font-medium hover:bg-[#1a1c15] transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg"
-                        >
-                            <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.09,16.67C20.06,16.74 19.67,18.11 18.71,19.5M13,3.5C13.73,2.67 14.94,2.04 15.94,2C16.07,3.17 15.6,4.35 14.9,5.19C14.21,6.04 13.07,6.7 11.95,6.61C11.8,5.46 12.36,4.26 13,3.5Z" />
-                            </svg>
-                            App Store
-                        </a>
+                    {/* App Store Links Section */}
+                    <div className="mt-8 pt-6 border-t border-gray-100">
+                        <p className="text-xs text-gray-400 font-medium uppercase tracking-wider mb-4">
+                            Don't have the app?
+                        </p>
+                        <div className="flex gap-3 justify-center">
+                            <a
+                                href={playStoreLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex-1 flex items-center justify-center gap-2 bg-gray-50 text-gray-800 py-3 px-4 rounded-xl text-sm font-semibold hover:bg-gray-100 transition-colors border border-gray-200"
+                            >
+                                <svg className="w-5 h-5 text-gray-600" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
+                                </svg>
+                                Google Play
+                            </a>
+                            <a
+                                href={appStoreLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex-1 flex items-center justify-center gap-2 bg-gray-50 text-gray-800 py-3 px-4 rounded-xl text-sm font-semibold hover:bg-gray-100 transition-colors border border-gray-200"
+                            >
+                                <svg className="w-5 h-5 text-gray-600" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M18.71,19.5C17.88,20.74 17,21.95 15.66,21.97C14.32,22 13.89,21.18 12.37,21.18C10.84,21.18 10.37,21.95 9.1,22C7.79,22.05 6.8,20.68 5.96,19.47C4.25,17 2.94,12.45 4.7,9.39C5.57,7.87 7.13,6.91 8.82,6.88C10.1,6.86 11.32,7.75 12.11,7.75C12.89,7.75 14.37,6.68 15.92,6.84C16.57,6.87 18.39,7.1 19.56,8.82C19.47,8.88 17.39,10.1 17.41,12.63C17.44,15.65 20.06,16.66 20.09,16.67C20.06,16.74 19.67,18.11 18.71,19.5M13,3.5C13.73,2.67 14.94,2.04 15.94,2C16.07,3.17 15.6,4.35 14.9,5.19C14.21,6.04 13.07,6.7 11.95,6.61C11.8,5.46 12.36,4.26 13,3.5Z" />
+                                </svg>
+                                App Store
+                            </a>
+                        </div>
                     </div>
 
                     {/* Back to Home */}
-                    <Link
-                        href="/"
-                        className="inline-flex items-center gap-2 mt-8 text-[#317039] hover:text-[#172D01] text-sm font-medium transition-colors"
-                    >
-                        <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                        </svg>
-                        Back to Passiton.app
-                    </Link>
+                    <div className="mt-8">
+                        <Link
+                            href="/"
+                            className="inline-flex items-center gap-2 text-gray-400 hover:text-gray-600 text-sm font-medium transition-colors"
+                        >
+                            <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                            </svg>
+                            Back to passiton.in
+                        </Link>
+                    </div>
                 </div>
-
-                {/* Footer text */}
-                <p className="text-center text-white/60 text-xs mt-6">
-                    Join the freecycling community today!
-                </p>
             </div>
         </main>
     );
@@ -151,7 +137,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
         openGraph: {
             title: `Passiton Profile`,
             description: "Someone shared their Passiton profile with you! Open the app to connect.",
-            url: `https://passiton.app/user/${id}`,
+            url: `https://passiton.in/user/${id}`,
             siteName: "Passiton",
             type: "profile",
         },
