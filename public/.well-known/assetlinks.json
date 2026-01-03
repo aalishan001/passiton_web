@@ -1,14 +1,16 @@
 [
-    {
-        "relation": [
-            "delegate_permission/common.handle_all_urls"
-        ],
-        "target": {
-            "namespace": "android_app",
-            "package_name": "com.thirdeyecreative.passiton",
-            "sha256_cert_fingerprints": [
-                "93:F3:9D:21:A5:CA:00:1D:04:CE:83:3E:A4:61:5D:0E:3D:42:16:17:A8:49:68:08:C3:60:89:03:0A:55:A5:08"
-            ]
-        }
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls",
+      "delegate_permission/common.get_login_creds"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.thirdeyecreative.passiton",
+      "sha256_cert_fingerprints": [
+        "93:F3:9D:21:A5:CA:00:1D:04:CE:83:3E:A4:61:5D:0E:3D:42:16:17:A8:49:68:08:C3:60:89:03:0A:55:A5:08",
+        "B8:60:89:F7:09:41:EF:3B:9F:22:CC:CA:36:CF:FB:DB:1A:70:97:13:40:F2:D0:78:AF:47:14:A9:54:A2:CD:38"
+      ]
     }
+  }
 ]
