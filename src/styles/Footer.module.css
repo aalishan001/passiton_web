@@ -1,0 +1,15 @@
+.strokeHeading {
+  /* Standard property for cross-browser support */
+  -webkit-text-stroke: 6px #BDF906;
+  
+  /* ensures the stroke stays outside the letter shapes */
+  paint-order: stroke fill;
+  
+  /* Optional: Adjust for mobile if 2px is too thick */
+}
+
+@media (max-width: 48em) { /* md breakpoint approx */
+  .strokeHeading {
+    -webkit-text-stroke: 4px #BDF906;
+  }
+}

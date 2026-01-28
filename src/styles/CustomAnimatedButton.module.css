@@ -1,0 +1,46 @@
+.wrapper {
+  position: relative;
+  display: inline-flex;
+  cursor: pointer;
+}
+
+/* SHADOW */
+.shadow {
+  position: absolute;
+  inset: 0;
+  border-radius: 9999px;
+  transform: translate(4px, 4px);
+  transition: transform 0.12s ease, opacity 0.12s ease;
+  pointer-events: none;
+}
+
+/* BUTTON */
+.button {
+  position: relative;
+  border-radius: 9999px;
+  transition: transform 0.12s ease;
+  box-sizing: border-box;
+}
+
+/* INNER CONTENT — CONTROLS SIZE */
+.inner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 28px 40px; /* same as px={10} py={7} */
+}
+
+/* HOVER */
+.wrapper:hover .button {
+  transform: translate(-1px, -1px);
+}
+
+/* ACTIVE / PRESSED */
+.wrapper:active .button {
+  transform: translate(4px, 4px);
+}
+
+.wrapper:active .shadow {
+  transform: translate(0px, 0px);
+  opacity: 0;
+}

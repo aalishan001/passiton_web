@@ -1,0 +1,189 @@
+/* const breakpoints = {
+  base: '0em', // 0px
+  sm: '30em', // ~480px. em is a relative unit and is dependant on the font size.
+  md: '48em', // ~768px
+  lg: '62em', // ~992px
+  xl: '80em', // ~1280px
+  '2xl': '96em', // ~1536px
+} */
+@import "tailwindcss";
+
+:root {
+  background-color: white;
+  color: black;
+}
+
+body {
+  margin: 0;
+  background-color: white;
+  color: black;
+}
+
+/* section 1 start */
+.hero-heading {
+  text-align: center;
+}
+
+/* Actual text styling */
+.hero-heading-text {
+  letter-spacing: -0.01em;
+  display: inline-block; /* critical for shadow */
+  color: #ffffff;
+
+  /* Outline simulation */
+  text-shadow:
+    -1.5px -1.5px 0 #000,
+    1.5px -1.5px 0 #000,
+    -1.5px 1.5px 0 #000,
+    1.5px 1.5px 0 #000,
+    /* Depth shadow */ 4px 4px 0 #000;
+  /* 0 0 10px rgba(0, 0, 0, 0.4); */ /* Soft glow */
+}
+
+/* section 1 end */
+
+/* section 3 start */
+@keyframes levitate {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.giving-card-image {
+  transform-origin: center;
+  will-change: transform;
+  animation: levitate 1.6s ease-in-out infinite;
+}
+
+/* section 3 end */
+
+/* section 4 start */
+
+@keyframes slide-up {
+  0% {
+    transform: translateY(0%);
+  }
+  25% {
+    transform: translateY(0%);
+  }
+  33% {
+    transform: translateY(-33.33%);
+  }
+  58% {
+    transform: translateY(-33.33%);
+  }
+  66% {
+    transform: translateY(-66.66%);
+  }
+  91% {
+    transform: translateY(-66.66%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
+
+/* section 4 end */
+
+/* section 5 start */
+/* Base Container */
+.card-container {
+  cursor: pointer;
+}
+
+/* Base Card Box with Permanent Shadow */
+.card-box {
+  box-shadow: 0px 4px 30px 0px rgba(0, 0, 0, 0.15) !important;
+  transition: box-shadow 0.4s ease-in-out !important;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle Shadow Deepening on Hover */
+.card-container:hover .card-box {
+  box-shadow: 0px 8px 35px 0px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Shared Image Transition */
+.mob-img-anim {
+  transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+/* Card 1: Bottom Right (Starting at -10deg) */
+.card-container:hover .mob-img-br {
+  transform: translateY(-15px) rotate(-12deg) scale(1.02) !important;
+}
+
+/* Card 2: Bottom Center (Starting at 0deg) */
+.card-container:hover .mob-img-bc {
+  transform: translateX(50%) translateY(-15px) rotate(0deg) scale(1.02) !important;
+}
+
+/* Card 3: Top Left (Starting at -10deg) */
+.card-container:hover .mob-img-tl {
+  transform: translateY(15px) rotate(-12deg) scale(1.02) !important;
+}
+
+/* section 5 end */
+
+/* xl: 992px – 1279px */
+@media (min-width: 992px) and (max-width: 1279px) {
+  /* section 1 start */
+  .hero-heading-text {
+    text-shadow:
+      -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000,
+      4px 4px 0 #000;
+  }
+  /* section 1 end */
+}
+
+/* lg: 768px–991px */
+@media (min-width: 768px) and (max-width: 991px) {
+  /* section 1 start */
+  .hero-heading-text {
+    text-shadow:
+      -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000,
+      4px 4px 0 #000;
+  }
+  /* section 1 end */
+}
+
+/* md: 480px–767px */
+@media (min-width: 480px) and (max-width: 767px) {
+  /* section 1 start */
+  .hero-heading-text {
+    text-shadow:
+      -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000,
+      3px 3px 0 #000;
+  }
+  /* section 1 end */
+}
+
+/* base: 0–479px */
+@media (max-width: 479px) {
+  /* section 1 start */
+  .hero-heading-text {
+    text-shadow:
+      -1px -1px 0 #000,
+      1px -1px 0 #000,
+      -1px 1px 0 #000,
+      1px 1px 0 #000,
+      3px 3px 0 #000;
+  }
+  /* section 1 start */
+}
